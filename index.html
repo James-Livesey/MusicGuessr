@@ -24,6 +24,8 @@
             firebase.initializeApp(firebaseConfig);
             firebase.analytics();
         </script>
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="index.js"></script>
     </head>
     <body>
         <header>
@@ -33,6 +35,16 @@
             <section class="cover">
                 <h1>Trivia on those beats amirite</h1>
                 <button>Sign in</button> <button class="secondary">Sign up</button>
+            </section>
+            <section>
+                <h2>Highscores</h2>
+                <table>
+                    <thead>
+                        <th>Name</th>
+                        <th width="100">Score</th>
+                    </thead>
+                    <tbody class="highscoreTableData"></tbody>
+                </table>
             </section>
         </main>
     </body>

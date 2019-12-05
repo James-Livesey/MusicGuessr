@@ -35,6 +35,8 @@ main {
 
 section {
     padding: 15px;
+    padding-left: 10vw;
+    padding-right: 10vw;
 }
 
 section.cover {
@@ -68,4 +70,43 @@ button.secondary {
 
 button.secondary:hover {
     background-color: #6bc2ff;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+table th {
+    padding: 10px;
+    background-color: #6bc2ff;
+    color: white;
+}
+
+table th:first-child {
+    border-top-left-radius: 10px;
+}
+
+table th:last-child {
+    border-top-right-radius: 10px;
+}
+
+table td {
+    padding: 10px;
+    background-color: #eaeaea;
+    color: black;
+}
+
+table tr:nth-child(2n) td {
+    background-color: #efefef;
+    color: black;
+}
+
+table tr:last-child td:first-child {
+    border-bottom-left-radius: 10px;
+}
+
+table tr:last-child td:last-child {
+    border-bottom-right-radius: 10px;
 }
