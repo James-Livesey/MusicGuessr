@@ -48,6 +48,15 @@ section.cover h1 {
     font-size: 40px;
 }
 
+a {
+    color: #0095ff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
 button {
     margin: 5px;
     padding: 10px;
@@ -70,6 +79,26 @@ button.secondary {
 
 button.secondary:hover {
     background-color: #6bc2ff;
+}
+
+button.bad {
+    background-color: #aaaaaa;
+}
+
+button.bad:hover {
+    background-color: #9a9a9a;
+}
+
+input {
+    margin: 5px;
+    padding: 10px;
+    background-color: #dddddd;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: text;
+    transition: 0.5s background-color;
 }
 
 table {
@@ -109,4 +138,36 @@ table tr:last-child td:first-child {
 
 table tr:last-child td:last-child {
     border-bottom-right-radius: 10px;
+}
+
+.left {
+    text-align: left;
+}
+
+.center {
+    text-align: center;
+}
+
+.right {
+    text-align: right;
+}
+
+.account {
+    text-align: center;
+}
+
+.account input {
+    display: block;
+    width: calc(100% - 20px);
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.account button {
+    display: inline-block;
+    width: calc(50% - 2px);
+    max-width: 158px;
+    margin-left: auto;
+    margin-right: auto;
 }

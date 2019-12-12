@@ -33,18 +33,18 @@
         </header>
         <main>
             <section class="cover">
-                <h1>Trivia on those beats amirite</h1>
-                <button onclick="window.location.href = 'signIn.html';">Sign in</button> <button class="secondary">Sign up</button>
+                <h1>Sign up to MusicGuessr</h1>
             </section>
-            <section>
-                <h2>Highscores</h2>
-                <table>
-                    <thead>
-                        <th>Name</th>
-                        <th width="100">Score</th>
-                    </thead>
-                    <tbody class="highscoreTableData"></tbody>
-                </table>
+            <section class="account">
+                <input placeholder="Username">
+                <input type="email" placeholder="Email address">
+                <input type="password" placeholder="Password">
+                <input type="password" placeholder="Retype password">
+                <button onclick="window.location.href = 'index.html';" class="bad">Cancel</button>
+                <button>Sign up</button>
+            </section>
+            <section class="center">
+                Already have an account? <a href="signin.html">Sign in!</a>
             </section>
         </main>
     </body>
