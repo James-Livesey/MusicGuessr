@@ -6,6 +6,15 @@ body {
     margin: 0;
 }
 
+a {
+    color: #0095ff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
 header {
     position: fixed;
     top: 0;
@@ -25,8 +34,13 @@ header a {
     transition: 0.5s background-color;
 }
 
-header a:hover {
+header a:hover, a.active:hover {
     background-color: rgba(255, 255, 255, 0.2);
+    text-decoration: none;
+}
+
+header a.active {
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
 main {
@@ -46,15 +60,6 @@ section.cover {
 
 section.cover h1 {
     font-size: 40px;
-}
-
-a {
-    color: #0095ff;
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: underline;
 }
 
 button {
@@ -152,6 +157,22 @@ table tr:last-child td:last-child {
     text-align: right;
 }
 
+.floatLeft {
+    float: left;
+}
+
+.floatRight {
+    float: right;
+}
+
+.desktop {
+    display: unset;
+}
+
+.mobile {
+    display: none;
+}
+
 .account {
     text-align: center;
 }
@@ -170,4 +191,16 @@ table tr:last-child td:last-child {
     max-width: 158px;
     margin-left: auto;
     margin-right: auto;
+}
+
+/* Media queries */
+
+@media (max-width: 500px) {
+    .desktop {
+        display: none;
+    }
+
+    .mobile {
+        display: unset;
+    }
 }
