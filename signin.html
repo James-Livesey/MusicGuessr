@@ -6,6 +6,7 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Material+Icons&display=swap">
         <link rel="stylesheet" href="style.css">
         <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-auth.js"></script>
         <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-database.js"></script>
         <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-analytics.js"></script>
         <script>
@@ -25,9 +26,10 @@
             firebase.analytics();
         </script>
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="account.js"></script>
         <script src="index.js"></script>
     </head>
-    <body>
+    <body data-account="signedOut">
         <header>
             <a href="index.html">MusicGuessr</a>
             <a href="game.html" class="floatRight">Game</a>
@@ -39,11 +41,12 @@
                 <h1>Sign into MusicGuessr</h1>
             </section>
             <section class="account">
-                <input type="email" placeholder="Email address">
-                <input type="password" placeholder="Password">
+                <input type="email" placeholder="Email address" id="email">
+                <input type="password" placeholder="Password" id="password">
                 <button onclick="window.location.href = 'index.html';" class="bad">Cancel</button>
-                <button>Sign in</button>
+                <button onclick="signIn();">Sign in</button>
             </section>
+            <section class="center" id="accountError"></section>
             <section class="center">
                 Don't have an account yet? <a href="signup.html">Sign up!</a>
             </section>

@@ -173,6 +173,10 @@ table tr:last-child td:last-child {
     display: none;
 }
 
+.signedIn {
+    display: none;
+}
+
 .account {
     text-align: center;
 }

@@ -6,6 +6,7 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Material+Icons&display=swap">
         <link rel="stylesheet" href="style.css">
         <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-auth.js"></script>
         <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-database.js"></script>
         <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-analytics.js"></script>
         <script>
@@ -25,6 +26,7 @@
             firebase.analytics();
         </script>
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="account.js"></script>
         <script src="index.js"></script>
     </head>
     <body>
@@ -36,8 +38,14 @@
         </header>
         <main>
             <section class="cover">
-                <h1>Trivia on those beats amirite</h1>
-                <button onclick="window.location.href = 'signin.html';">Sign in</button> <button onclick="window.location.href = 'signup.html';" class="secondary">Sign up</button>
+                <div class="signedOut">
+                    <h1>Trivia on those beats amirite</h1>
+                    <button onclick="window.location.href = 'signin.html';">Sign in</button> <button onclick="window.location.href = 'signup.html';" class="secondary">Sign up</button>
+                </div>
+                <div class="signedIn">
+                    <h1>Oh hello good day <span class="accountName">User</span></h1>
+                    <button onclick="window.location.href = 'game.html';">Play game</button> <button onclick="signOut();" class="secondary">Sign out</button>
+                </div>
             </section>
             <section>
                 <h2>Highscores</h2>
