@@ -3,6 +3,9 @@ var currentUser = {
     name: null
 };
 
+var currentLocation = window.location.href;
+var currentPage = currentLocation.split("/")[currentLocation.split("/").length - 1];
+
 function checkUsername(username) {
     return username.length >= 5 && username.length <= 20 && username.indexOf(" ") < 0;
 }
@@ -69,6 +72,22 @@ $(function() {
             $(".accountName").text("User");
             $(".signedIn").hide();
             $(".signedOut").show();
+        }
+    });
+
+    $("#password").on("keypress", function(event) {
+        if (event.keyCode == 13) {
+            if (currentPage == "signin.html") {
+                signIn();
+            }
+        }
+    });
+
+    $("#retypedPassword").on("keypress", function(event) {
+        if (event.keyCode == 13) {
+            if (currentPage == "signup.html") {
+                signUp();
+            }
         }
     });
 });
