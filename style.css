@@ -94,6 +94,14 @@ button.bad:hover {
     background-color: #9a9a9a;
 }
 
+button.reallyBad {
+    background-color: #eb4034;
+}
+
+button.reallyBad:hover {
+    background-color: #f06e65;
+}
+
 input {
     margin: 5px;
     padding: 10px;
@@ -197,6 +205,34 @@ table tr:last-child td:last-child {
     margin-right: auto;
 }
 
+.changeAccount {
+    text-align: center;
+}
+
+.changeAccount label, .changeAccount span.noLabel {
+    display: inline-block;
+    width: 80px;
+    text-align: left;
+}
+
+.changeAccount input, .changeAccount .buttonAction {
+    width: calc(100% - 160px);
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.changeAccount .buttonAction {
+    width: calc(100% - 140px);
+    max-width: 320px;
+}
+
+.changeAccount button, .changeAccount span.noSave {
+    display: inline-block;
+    width: 40px;
+    margin: 5px;
+}
+
 /* Media queries */
 
 @media (max-width: 500px) {
@@ -207,4 +243,10 @@ table tr:last-child td:last-child {
     .mobile {
         display: unset;
     }
+}
+
+/* Library overrides */
+
+i.material-icons {
+    font-size: unset;
 }

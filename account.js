@@ -32,6 +32,14 @@ function signOut() {
     firebase.auth().signOut();
 }
 
+function changeDetails() {
+
+}
+
+function changePassword() {
+    
+}
+
 $(function() {
     firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
@@ -66,7 +74,7 @@ $(function() {
             currentUser.name = null;
 
             if ($("body").attr("data-account") == "signedIn") {
-                window.location.href = "index.html";
+                window.location.href = "signin.html";
             }
 
             $(".accountName").text("User");

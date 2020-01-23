@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>MusicGuessr</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Material+Icons&display=swap">
+        <link rel="stylesheet" href="style.css">
+        <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-database.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-analytics.js"></script>
+        <script>
+            var firebaseConfig = {
+                apiKey: "AIzaSyA5ItqHivJNv5rCdmqkjOTkZkAS0ctGxFY",
+                authDomain: "musicguessr-ns.firebaseapp.com",
+                databaseURL: "https://musicguessr-ns.firebaseio.com",
+                projectId: "musicguessr-ns",
+                storageBucket: "musicguessr-ns.appspot.com",
+                messagingSenderId: "827783511392",
+                appId: "1:827783511392:web:4bc405bfd4988255f6b205",
+                measurementId: "G-H1DY5PG5BP"
+            };
+
+            // Initialize Firebase
+            firebase.initializeApp(firebaseConfig);
+            firebase.analytics();
+        </script>
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="account.js"></script>
+        <script src="index.js"></script>
+    </head>
+    <body data-account="signedIn">
+        <header>
+            <a href="index.html">MusicGuessr</a>
+            <a href="game.html" class="floatRight">Game</a>
+            <a href="account.html" class="floatRight active">Account</a>
+            <a href="index.html" class="floatRight desktop">Home</a>
+        </header>
+        <main>
+            <section class="cover">
+                <h1>Account</h1>
+            </section>
+            <section class="changeAccount">
+                <div>
+                    <label for="username">Username</label>
+                    <input placeholder="Jonny" id="username">
+                    <button onclick="changeUsername();"><i class="material-icons">save</i></button>
+                </div>
+                <div>
+                    <label for="email">Email</label>
+                    <input type="email" placeholder="jonny@isbad.com" id="email">
+                    <button onclick="changeEmail();"><i class="material-icons">save</i></button>
+                </div>
+            </section>
+            <section class="changeAccount">
+                <div>
+                    <label for="password">Password</label>
+                    <input type="password" placeholder="badjonny123" id="password">
+                    <span class="noSave"></span>
+                </div>
+                <div>
+                    <label for="retypedPassword">Retype it</label>
+                    <input type="password" placeholder="badjonny123" id="retypedPassword">
+                    <span class="noSave"></span>
+                </div>
+                <div>
+                    <span class="noLabel"></span>
+                    <button onclick="changePassword();" class="buttonAction">Change password</button>
+                    <span class="noSave"></span>
+                </div>
+            </section>
+            <section class="changeAccount">
+                <div>
+                    <span class="noLabel"></span>
+                    <button onclick="deleteAccount();" class="buttonAction reallyBad">Delete account</button>
+                    <span class="noSave"></span>
+                </div>
+            </section>
+            <section class="center" id="accountError"></section>
+        </main>
+    </body>
+</html>
