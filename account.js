@@ -1,6 +1,7 @@
 var currentUser = {
     uid: null,
-    name: null
+    name: null,
+    email: null
 };
 
 var currentLocation = window.location.href;
@@ -32,12 +33,32 @@ function signOut() {
     firebase.auth().signOut();
 }
 
-function changeDetails() {
+function changeUsername() {
+    firebase.database().ref("users/" + currentUser.uid + "/name").set($("#username").val());
+}
 
+function changeEmail() {
+    firebase.auth().currentUser.updateEmail($("#email").val()).catch(function(error) {
+        $("#accountError").text(error.message);
+    });
 }
 
 function changePassword() {
-    
+    if ($("#password").val() == $("#retypedPassword").val()) {
+        firebase.auth().currentUser.updatePassword($("#password").val()).catch(function(error) {
+            $("#accountError").text(error.message());
+        });
+    } else {
+        $("#accountError").text("Make sure that both passwords you typed are the same");
+    }
+}
+
+function deleteAccount() {
+    firebase.auth().currentUser.delete().then(function() {
+        window.location.href = "index.html";
+    }).catch(function(error) {
+        $("#accountError").text(error.message);
+    });
 }
 
 $(function() {
@@ -46,6 +67,7 @@ $(function() {
             // User is signed in
 
             currentUser.uid = user.uid;
+            currentUser.email = user.email;
 
             if ($("body").attr("data-account") == "signedOut") {
                 window.location.href = "index.html";
@@ -62,6 +84,11 @@ $(function() {
                         window.location.href = "index.html";
                     });
                 } else {
+                    if (currentPage == "account.html") {
+                        $("#username").val(snapshot.val());
+                        $("#email").val(currentUser.email);
+                    }
+
                     $(".accountName").text(snapshot.val());
                     $(".signedIn").show();
                     $(".signedOut").hide();
@@ -72,6 +99,7 @@ $(function() {
 
             currentUser.uid = null;
             currentUser.name = null;
+            currentUser.email = null;
 
             if ($("body").attr("data-account") == "signedIn") {
                 window.location.href = "signin.html";
