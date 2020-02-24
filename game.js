@@ -14,6 +14,8 @@ $(function() {
     var songArtist;
     var songLetters;
     var userText = "";
+    var lives = 2;
+    var deductingLife = false;
 
     function getSong() {
         firebase.database().ref("songs").once("value", function(snapshot) {
@@ -38,6 +40,39 @@ $(function() {
         });
     }
 
+    function updateLivesDisplay() {
+        $(".livesDisplay").text("❤️".repeat(lives));
+    }
+
+    function deductLife() {
+        if (!deductingLife) {
+            deductingLife = true;
+            var oldLives = lives;
+
+            for (var i = 0; i < 10; i++) {
+                setTimeout(function() {
+                    if (lives != oldLives) {
+                        lives++;
+                    } else {
+                        lives--;
+                    }
+
+                    updateLivesDisplay();
+                }, 100 * i);
+            }
+
+            lives = oldLives - 1;
+
+            setTimeout(function() {
+                if (lives == 0) {
+                    window.location.href = "index.html"; // TODO: Create game over page
+                }
+
+                deductingLife = false;
+            }, 1000);
+        }
+    }
+
     function renderText() {
         var songDisplay = songLetters;
 
@@ -49,11 +84,27 @@ $(function() {
             }
             
             if (i >= songDisplay.length - 1) {
-                setTimeout(function() {
-                    userText = "";
+                if (songDisplay == songName.toUpperCase()) {
+                    // TODO: Increment score
 
-                    getSong();
-                }, 500);
+                    lives = 2;
+
+                    updateLivesDisplay();
+
+                    setTimeout(function() {
+                        userText = "";
+
+                        getSong();
+                    }, 500);
+                } else {
+                    deductLife();
+
+                    setTimeout(function() {
+                        userText = "";
+
+                        renderText();
+                    }, 1000);
+                }
             }
         }
 
@@ -83,4 +134,10 @@ $(function() {
     });
 
     getSong();
+
+    firebase.auth().onAuthStateChanged(function() {
+        firebase.database().ref("users/" + currentUser.uid + "/score").on("value", function(snapshot) {
+            $(".scoreDisplay").text(snapshot.val());
+        });
+    });
 });

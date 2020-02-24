@@ -62,6 +62,22 @@ section.cover h1 {
     font-size: 40px;
 }
 
+section.hud {
+    background-color: #f5d0d0;
+    font-size: 25px;
+}
+
+section.hud > div {
+    display: inline-block;
+    width: calc(50% - 4px);
+    margin: 0;
+    padding: 0;
+}
+
+section.hud > div:nth-child(2) {
+    text-align: right;
+}
+
 button {
     margin: 5px;
     padding: 10px;
