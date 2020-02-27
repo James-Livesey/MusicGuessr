@@ -169,6 +169,10 @@ table tr:last-child td:last-child {
     border-bottom-right-radius: 10px;
 }
 
+table tr.me {
+    font-weight: bold;
+}
+
 .left {
     text-align: left;
 }

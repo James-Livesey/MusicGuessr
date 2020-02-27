@@ -65,7 +65,7 @@ $(function() {
 
             setTimeout(function() {
                 if (lives == 0) {
-                    window.location.href = "index.html"; // TODO: Create game over page
+                    window.location.href = "gameover.html";
                 }
 
                 deductingLife = false;
@@ -85,7 +85,13 @@ $(function() {
             
             if (i >= songDisplay.length - 1) {
                 if (songDisplay == songName.toUpperCase()) {
-                    // TODO: Increment score
+                    firebase.database().ref("users/" + currentUser.uid + "/score").once("value", function(snapshot) {
+                        firebase.database().ref("users/" + currentUser.uid + "/score").set(snapshot.val() + (
+                            lives == 2 ?
+                            3 :
+                            1
+                        ));
+                    });
 
                     lives = 2;
 

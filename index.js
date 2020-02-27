@@ -7,14 +7,26 @@ $(function() {
         snapshot.forEach(function(childSnapshot) {
             setTimeout(function() {
                 $(".highscoreTableData").prepend(
-                    $("<tr>").append([
+                    $("<tr" + (
+                        childSnapshot.key == currentUser.uid ?
+                        " class='me'" :
+                        ""
+                    ) + ">").append([
                         $("<td>").text(childSnapshot.val().name),
                         $("<td>").text(childSnapshot.val().score)
                     ])
-                ); 
+                );
             }, delayValue);
 
             delayValue += 100;
         });
+    });
+
+    firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+            firebase.database().ref("users/" + currentUser.uid + "/score").on("value", function(snapshot) {
+                $(".scoreDisplay").text(snapshot.val());
+            });
+        }
     });
 });
