@@ -28,39 +28,40 @@
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
         <script src="account.js"></script>
         <script src="index.js"></script>
+        <script src="songsuggest.js"></script>
     </head>
-    <body>
+    <body data-account="signedIn">
         <header>
             <a href="index.html">MusicGuessr</a>
             <a href="game.html" class="floatRight">Game</a>
             <a href="account.html" class="floatRight">Account</a>
-            <a href="index.html" class="floatRight active desktop">Home</a>
+            <a href="index.html" class="floatRight desktop">Home</a>
         </header>
         <main>
             <section class="cover">
-                <div class="signedOut">
-                    <h1>Trivia on those beats amirite</h1>
-                    <button onclick="window.location.href = 'signin.html';">Sign in</button> <button onclick="window.location.href = 'signup.html';" class="secondary">Sign up</button>
+                <h1>Suggest a song</h1>
+            </section>
+            <section class="changeAccount">
+                <div>
+                    <p>Hi <strong class="accountName">User</strong>! Suggest a song here for fellow players to guess.</p>
                 </div>
-                <div class="signedIn">
-                    <h1>Oh hello good day <span class="accountName">User</span></h1>
-                    <button onclick="window.location.href = 'game.html';">Play game</button> <button onclick="signOut();" class="secondary">Sign out</button>
+                <div>
+                    <label for="title">Title</label>
+                    <input placeholder="The song title goes here" id="title">
+                    <span class="noSave"></span>
+                </div>
+                <div>
+                    <label for="artist">Artist</label>
+                    <input placeholder="And the artist goes here" id="artist">
+                    <span class="noSave"></span>
+                </div>
+                <div>
+                    <span class="noLabel"></span>
+                    <button onclick="suggestSong();" class="buttonAction">Suggest song</button>
+                    <span class="noSave"></span>
                 </div>
             </section>
-            <section>
-                <h2>Highscores</h2>
-                <table>
-                    <thead>
-                        <th>Username</th>
-                        <th width="100">Score</th>
-                    </thead>
-                    <tbody class="highscoreTableData"></tbody>
-                </table>
-            </section>
-            <section class="center signedIn">
-                <p>Did you know you can suggest a song so that other players can try and guess it?</p>
-                <button onclick="window.location.href = 'songsuggest.html';">Suggest a song</button>
-            </section>
+            <section class="center" id="suggestError"></section>
         </main>
     </body>
 </html>

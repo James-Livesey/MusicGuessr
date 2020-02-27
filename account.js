@@ -7,6 +7,10 @@ var currentUser = {
 var currentLocation = window.location.href;
 var currentPage = currentLocation.split("/")[currentLocation.split("/").length - 1];
 
+function getURLParameter(name) {
+    return decodeURIComponent((new RegExp("[?|&]" + name + "=" + "([^&;]+?)(&|#|;|$)").exec(location.search) || [null, ""])[1].replace(/\+/g, "%20")) || null;
+}
+
 function checkUsername(username) {
     return username.length >= 5 && username.length <= 20 && username.indexOf(" ") < 0;
 }

@@ -24,6 +24,7 @@ $(function() {
 
             songName = snapshot.val()[randomSongKey].name;
             songArtist = snapshot.val()[randomSongKey].artist;
+            songUID = snapshot.val()[randomSongKey].uid;
 
             songLetters = "";
 
@@ -37,6 +38,10 @@ $(function() {
 
             $(".songLetters").text(songLetters);
             $(".songArtist").text(songArtist);
+
+            firebase.database().ref("users/" + songUID + "/name").once("value", function(snapshot) {
+                $(".songSuggester").text(snapshot.val());
+            });
         });
     }
 
