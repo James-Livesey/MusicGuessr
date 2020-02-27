@@ -29,7 +29,7 @@ $(function() {
             songLetters = "";
 
             for (var i = 0; i < songName.split(" ").length; i++) {
-                songLetters += songName.split(" ")[i][0];
+                songLetters += songName.split(" ")[i][0].toUpperCase();
                 songLetters += "_".repeat(songName.split(" ")[i].length - 1);
                 songLetters += " ";
             }
@@ -89,7 +89,7 @@ $(function() {
             }
             
             if (i >= songDisplay.length - 1) {
-                if (songDisplay == songName.toUpperCase()) {
+                if (songDisplay.toUpperCase() == songName.toUpperCase()) {
                     firebase.database().ref("users/" + currentUser.uid + "/score").once("value", function(snapshot) {
                         firebase.database().ref("users/" + currentUser.uid + "/score").set(snapshot.val() + (
                             lives == 2 ?
