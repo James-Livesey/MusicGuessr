@@ -27,9 +27,9 @@ function signUp() {
             $("#accountError").text(error.message);
         });
     } else if (!checkUsername($("#username").val())) {
-        $("#accountError").text("Your username must contain between 5 to 20 characters and must not contain spaces");
+        $("#accountError").text("Your username must contain between 5 to 20 characters and must not contain spaces.");
     } else {
-        $("#accountError").text("Make sure that both passwords you typed are the same");
+        $("#accountError").text("Make sure that both passwords you typed are the same.");
     }
 }
 
@@ -53,7 +53,7 @@ function changePassword() {
             $("#accountError").text(error.message());
         });
     } else {
-        $("#accountError").text("Make sure that both passwords you typed are the same");
+        $("#accountError").text("Make sure that both passwords you typed are the same.");
     }
 }
 
